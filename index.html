@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>真心话大冒险</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+			margin: 0;
+			padding: 0;
+			background-color: #f5f5f5;
+		}
+		h1 {
+			margin-top: 30px;
+			font-size: 36px;
+			color: #333;
+		}
+		button {
+			padding: 10px 20px;
+			margin-top: 20px;
+			border-radius: 5px;
+			border: none;
+			background-color: #1abc9c;
+			color: #fff;
+			font-size: 18px;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #16a085;
+		}
+		#modal {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.5);
+			display: none;
+			align-items: center;
+			justify-content: center;
+			z-index: 999;
+		}
+		.modal-content {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+			max-width: 80%;
+			max-height: 80%;
+			overflow: auto;
+			text-align: center;
+		}
+		.close-btn {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			font-size: 24px;
+			color: #333;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h1>真心话大冒险</h1>
+	<button id="dare-btn">大冒险</button>
+	<button id="truth-btn">真心话</button>
+
+	<div id="modal">
+		<div class="modal-content">
+			<p id="question"></p>
+			<span class="close-btn">&times;</span>
+		</div>
+	</div>
+
+	<script>
+		// 随机生成大冒险问题的数组
+		var dareQuestions = [
+			"打电话给一个陌生人，然后跟他聊天5分钟",
+			"唱一首难度较高的歌曲",
+			"对面前的人表白10秒钟",
+			"用鼻子吃一个小零食",
+			"给一位陌生人送一个拥抱",
+			"在公共场合跳一段恰恰舞",
+			"尝试绕口令，如果失败惩罚",
+			"躺在地上大喊'我是一条小虫子'",
+			"对着陌生人大喊“我喜欢你！”",
+			"找一个路人请求拥抱"
+		];
+
+		// 随机生成真心话问题的数组
+		var truthQuestions = [
+			"喜欢过你最好的朋友？",
+			"你有没有骗过你的父母？",
+			"你有没有在考试中作弊？",
+			"你有没有对某个人说谎，让他/她误解你的意图？",
+			"你最长一次没有洗澡的时间有多长？",
+			"你最深的秘密是什么？",
+			"你有没有偷看过别人的私人日记？",
+			"你有没有偷偷吃过室友或家人的零食？",
+			"你有没有撒谎让自己看起来更酷或更成功？",
+			"你有没有在别人背后说坏话？"
+		];
+
+			// 获取按钮和模态框元素
+        var dareBtn = document.getElementById('dare-btn');
+        var truthBtn = document.getElementById('truth-btn');
+        var modal = document.getElementById('modal');
+        var question = document.getElementById('question');
+        var closeBtn = document.querySelector('.close-btn');
+
+        // 绑定按钮点击事件
+        dareBtn.addEventListener('click', function() {
+            // 随机从大冒险问题数组中获取一个问题
+            var randomIndex = Math.floor(Math.random() * dareQuestions.length);
+            var randomQuestion = dareQuestions[randomIndex];
+
+            // 显示模态框并设置问题内容
+            modal.style.display = 'flex';
+            question.innerText = randomQuestion;
+        });
+
+        truthBtn.addEventListener('click', function() {
+            // 随机从真心话问题数组中获取一个问题
+            var randomIndex = Math.floor(Math.random() * truthQuestions.length);
+            var randomQuestion = truthQuestions[randomIndex];
+
+            // 显示模态框并设置问题内容
+            modal.style.display = 'flex';
+            question.innerText = randomQuestion;
+        });
+
+        // 绑定关闭模态框按钮点击事件
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            question.innerText = '';
+        });
+
+        // 点击模态框外部区域也可关闭模态框
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                question.innerText = '';
+            }
+        });
+    </script>
+</body>
+</html>
