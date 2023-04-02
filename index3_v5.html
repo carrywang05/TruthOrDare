@@ -118,7 +118,7 @@
     dareBtn.innerHTML = "大冒险";
 
     truthBtn.onclick = function() {
-      // 生成随机的大冒险内容
+        // 生成随机的真心话内容
 		var truth = generateTruth();
         modal.style.display= "block";
         modalText.innerText = truth;
@@ -131,7 +131,7 @@
         modalText.innerText = dare;
     }
 
-    	// 生成随机的大冒险内容
+    // 生成随机的大冒险内容
     function generateDare() {
       var dares = [
         "和隔壁的人合唱一首歌",
