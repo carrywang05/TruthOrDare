@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Truth or Dare</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      color: #fff;
+      background-color: #f00;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+    }
+
+    .modal-content {
+      width: 300px;
+      height: 500px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 5px;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 20px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: #f00;
+    }
+  </style>
+</head>
+<body>
+  <h1>Truth or Dare</h1>
+  <button class="btn" id="truth-btn">真心话</button>
+  <button class="btn" id="dare-btn">大冒险</button>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-btn">&times;</span>
+      <p id="modal-text"></p>
+    </div>
+  </div>
+
+  <script>
+    var truthBtn = document.getElementById("truth-btn");
+    var dareBtn = document.getElementById("dare-btn");
+    var modal = document.getElementById("modal");
+    var closeBtn = document.getElementById("close-btn");
+    var modalText = document.getElementById("modal-text");
+
+    truthBtn.onclick = function() {
+      modal.style.display = "block";
+      modalText.innerHTML = "你有没有告诉过一个谎话，是什么？";
+    }
+
+    dareBtn.onclick = function() {
+      modal.style.display = "block";
+      modalText.innerHTML = "做个鬼脸给大家看！";
+    }
+
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+  </script>
+</body>
+</html>
