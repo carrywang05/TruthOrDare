@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>真心话大冒险</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0;
+      width: 120px;
+      height: 120px;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      color: #fff;
+      background-color: transparent;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      margin: 10px;
+      background-position: center;
+      background-size: cover;
+    }
+
+    #truth-btn {
+        background-image: url(img/heart.png);
+    }
+
+    #dare-btn {
+        background-image: url(img/adventure2.png);
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+    }
+
+    .modal-content {
+      width: 300px;
+      height: 500px;
+      margin: 0 auto;
+      background-size: cover;
+      background-image: url("img/background1.jpg");
+      background-size: cover;
+      background-position: center;
+      border-radius: 5px;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 20px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: #f00;
+    }
+
+    #modal-text {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Truth or Dare</h1>
+  <button class="btn" id="truth-btn"></button>
+  <button class="btn" id="dare-btn"></button>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-btn">&times;</span>
+      <p id="modal-text"></p>
+    </div>
+  </div>
+
+  <script>
+    var truthBtn = document.getElementById("truth-btn");
+    var dareBtn = document.getElementById("dare-btn");
+    var modal = document.getElementById("modal");
+    var closeBtn = document.getElementById("close-btn");
+    var modalText = document.getElementById("modal-text");
+    var modalContent = document.getElementById("modal-content");
+
+
+    truthBtn.innerHTML = "真心话";
+    dareBtn.innerHTML = "大冒险";
+
+    truthBtn.onclick = function() {
+      // 生成随机的大冒险内容
+		var truth = generateTruth();
+        modal.style.display= "block";
+        modalText.innerText = truth;
+    }
+
+    dareBtn.onclick = function() {
+        // 生成随机的大冒险内容
+        var dare = generateDare();
+        modal.style.display = "block";
+        modalText.innerText = dare;
+    }
+
+    	// 生成随机的大冒险内容
+    function generateDare() {
+      var dares = [
+        "和隔壁的人合唱一首歌",
+        "用左手拨打电话",
+        "跳一分钟的肚皮舞",
+        "用下巴夹起一根笔或铅笔",
+        "和一位异性十指相扣，大声喊一句我爱你",
+        "穿高跟鞋走路一分钟",
+        "大声朗读自己最喜欢的一首诗",
+        "倒立在墙角，保持5秒钟",
+        "亲吻一下房间里的一件物品",
+        "模仿一下你最喜欢的明星",
+        "和随机一位朋友一起跳绳",
+        "在房间里尽情大声歌唱一首歌",
+        "大喊“我是天才，我会变出黄色小鸭子”"
+      ];
+      var randomIndex = Math.floor(Math.random() * dares.length);
+      return dares[randomIndex];
+    }
+
+    // 生成随机的真心话内容
+    function generateTruth() {
+      var truths = [
+        "喜欢过你最好的朋友？",
+        "你有没有骗过你的父母？",
+        "你有没有在考试中作弊？",
+        "你有没有对某个人说谎，让他/她误解你的意图？",
+        "你最长一次没有洗澡的时间有多长？",
+        "你最深的秘密是什么？",
+        "你有没有偷看过别人的私人日记？",
+        "你有没有偷偷吃过室友或家人的零食？",
+        "你有没有撒谎让自己看起来更酷或更成功？",
+        "你有没有在别人背后说坏话？"
+      ];
+      var randomIndex = Math.floor(Math.random() * truths.length);
+      return truths[randomIndex];
+    }
+    
+    //生成随机的弹框背景图
+    function generateImgUrl() {
+        // 定义风景图数组
+        var images = [
+            "img/background1.jpg",
+            "img/background2.jpg",
+            "img/background3.jpg",
+            "img/background4.jpg"
+        ];
+
+        // 生成随机数
+        var randomIndex = Math.floor(Math.random() * images.length);
+
+        // 返回图片文件名
+        return images[randomIndex];
+    }
+
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+
+</script>
+</body>
+</html>
