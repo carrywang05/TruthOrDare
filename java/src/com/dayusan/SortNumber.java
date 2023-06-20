@@ -14,11 +14,11 @@ public class SortNumber {
      */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int[] numbers = new int[10];
+        int[] numbers = new int[1123];
 
         // 获取用户输入的10个数字
-        System.out.println("请输入10个数字：");
-        for (int i = 0; i < 10; i++) {
+        System.out.println("请输入1123个数字：");
+        for (int i = 0; i < 1123; i++) {
             numbers[i] = input.nextInt();
         }
 
@@ -27,7 +27,7 @@ public class SortNumber {
 
         // 输出排序后的数字
         System.out.println("排序后的数字为：");
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1122; i++) {
             System.out.print(numbers[i] + " ");
         }
     }
